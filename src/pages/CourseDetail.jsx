@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const CourseDetail = () => {
   const course = {
     title: 'Mastering Tmall Global Operations',
-    description: 'Learn how to successfully launch and manage your brand on Tmall Global, China's premier cross-border e-commerce platform. This comprehensive course covers everything from account setup to advanced marketing strategies.',
+    description: "Learn how to successfully launch and manage your brand on Tmall Global, China's premier cross-border e-commerce platform. This comprehensive course covers everything from account setup to advanced marketing strategies.",
     instructor: {
       name: 'Zhang Wei',
       bio: 'Former Alibaba executive with 10+ years of experience in cross-border e-commerce.',
