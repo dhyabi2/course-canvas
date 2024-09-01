@@ -7,30 +7,30 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Auth = () => {
   return (
-    <div className="container mx-auto py-8 flex items-center justify-center min-h-screen">
+    <div className="container mx-auto py-8 flex items-center justify-center min-h-screen" dir="rtl">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Welcome</CardTitle>
-          <CardDescription>Sign up or log in to access your account</CardDescription>
+          <CardTitle>مرحبًا بك</CardTitle>
+          <CardDescription>سجل أو قم بتسجيل الدخول للوصول إلى حسابك</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              <TabsTrigger value="login">تسجيل الدخول</TabsTrigger>
+              <TabsTrigger value="signup">إنشاء حساب</TabsTrigger>
             </TabsList>
             <TabsContent value="login">
               <form>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Enter your email" />
+                    <Label htmlFor="email">البريد الإلكتروني</Label>
+                    <Input id="email" type="email" placeholder="أدخل بريدك الإلكتروني" />
                   </div>
                   <div>
-                    <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" placeholder="Enter your password" />
+                    <Label htmlFor="password">كلمة المرور</Label>
+                    <Input id="password" type="password" placeholder="أدخل كلمة المرور" />
                   </div>
-                  <Button type="submit" className="w-full">Log In</Button>
+                  <Button type="submit" className="w-full">تسجيل الدخول</Button>
                 </div>
               </form>
             </TabsContent>
@@ -38,18 +38,18 @@ const Auth = () => {
               <form>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="Enter your full name" />
+                    <Label htmlFor="name">الاسم الكامل</Label>
+                    <Input id="name" placeholder="أدخل اسمك الكامل" />
                   </div>
                   <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Enter your email" />
+                    <Label htmlFor="email">البريد الإلكتروني</Label>
+                    <Input id="email" type="email" placeholder="أدخل بريدك الإلكتروني" />
                   </div>
                   <div>
-                    <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" placeholder="Create a password" />
+                    <Label htmlFor="password">كلمة المرور</Label>
+                    <Input id="password" type="password" placeholder="أنشئ كلمة مرور" />
                   </div>
-                  <Button type="submit" className="w-full">Sign Up</Button>
+                  <Button type="submit" className="w-full">إنشاء حساب</Button>
                 </div>
               </form>
             </TabsContent>
@@ -57,10 +57,10 @@ const Auth = () => {
         </CardContent>
         <CardFooter className="flex justify-center">
           <div className="flex flex-col items-center space-y-2">
-            <p className="text-sm text-muted-foreground">Or continue with</p>
+            <p className="text-sm text-muted-foreground">أو تابع باستخدام</p>
             <div className="flex space-x-2">
-              <Button variant="outline">Google</Button>
-              <Button variant="outline">Facebook</Button>
+              <Button variant="outline">جوجل</Button>
+              <Button variant="outline">فيسبوك</Button>
             </div>
           </div>
         </CardFooter>

@@ -6,44 +6,44 @@ import { Button } from "@/components/ui/button";
 
 const CoursesListing = () => {
   const courses = [
-    { id: 1, title: 'Tmall Store Optimization', category: 'Tmall', image: '/placeholder.svg' },
-    { id: 2, title: 'JD.com Advertising Strategies', category: 'JD.com', image: '/placeholder.svg' },
-    { id: 3, title: 'WeChat Mini-Program Development', category: 'WeChat', image: '/placeholder.svg' },
-    { id: 4, title: 'Cross-Border E-commerce on Kaola', category: 'Cross-Border', image: '/placeholder.svg' },
-    { id: 5, title: 'Pinduoduo Group Buying Tactics', category: 'Pinduoduo', image: '/placeholder.svg' },
-    { id: 6, title: 'Douyin E-commerce Integration', category: 'Social Commerce', image: '/placeholder.svg' },
+    { id: 1, title: 'تحسين متجر تي مول', category: 'تي مول', image: '/placeholder.svg' },
+    { id: 2, title: 'استراتيجيات الإعلان على جيه دي دوت كوم', category: 'جيه دي دوت كوم', image: '/placeholder.svg' },
+    { id: 3, title: 'تطوير تطبيقات وي تشات المصغرة', category: 'وي تشات', image: '/placeholder.svg' },
+    { id: 4, title: 'التجارة الإلكترونية عبر الحدود على كاولا', category: 'عبر الحدود', image: '/placeholder.svg' },
+    { id: 5, title: 'تكتيكات الشراء الجماعي على بيندودو', category: 'بيندودو', image: '/placeholder.svg' },
+    { id: 6, title: 'دمج التجارة الإلكترونية في دويين', category: 'التجارة الاجتماعية', image: '/placeholder.svg' },
   ];
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">China E-commerce Courses</h1>
+    <div className="container mx-auto py-8" dir="rtl">
+      <h1 className="text-4xl font-bold mb-8 text-center">دورات التجارة الإلكترونية الصينية</h1>
 
       {/* Filtering and Search */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <Select>
           <SelectTrigger className="w-full md:w-[200px]">
-            <SelectValue placeholder="Platform" />
+            <SelectValue placeholder="المنصة" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Platforms</SelectItem>
-            <SelectItem value="tmall">Tmall</SelectItem>
-            <SelectItem value="jd">JD.com</SelectItem>
-            <SelectItem value="wechat">WeChat</SelectItem>
-            <SelectItem value="cross-border">Cross-Border</SelectItem>
+            <SelectItem value="all">جميع المنصات</SelectItem>
+            <SelectItem value="tmall">تي مول</SelectItem>
+            <SelectItem value="jd">جيه دي دوت كوم</SelectItem>
+            <SelectItem value="wechat">وي تشات</SelectItem>
+            <SelectItem value="cross-border">عبر الحدود</SelectItem>
           </SelectContent>
         </Select>
         <Select>
           <SelectTrigger className="w-full md:w-[200px]">
-            <SelectValue placeholder="Sort By" />
+            <SelectValue placeholder="ترتيب حسب" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="popular">Most Popular</SelectItem>
-            <SelectItem value="newest">Newest</SelectItem>
-            <SelectItem value="price-low">Price: Low to High</SelectItem>
-            <SelectItem value="price-high">Price: High to Low</SelectItem>
+            <SelectItem value="popular">الأكثر شعبية</SelectItem>
+            <SelectItem value="newest">الأحدث</SelectItem>
+            <SelectItem value="price-low">السعر: من الأقل إلى الأعلى</SelectItem>
+            <SelectItem value="price-high">السعر: من الأعلى إلى الأقل</SelectItem>
           </SelectContent>
         </Select>
-        <Input type="search" placeholder="Search courses..." className="flex-grow" />
+        <Input type="search" placeholder="ابحث عن الدورات..." className="flex-grow" />
       </div>
 
       {/* Course Grid */}
@@ -58,7 +58,7 @@ const CoursesListing = () => {
               <img src={course.image} alt={course.title} className="w-full h-48 object-cover rounded-md" />
             </CardContent>
             <CardFooter>
-              <Button className="w-full">Enroll Now</Button>
+              <Button className="w-full">سجل الآن</Button>
             </CardFooter>
           </Card>
         ))}
@@ -66,11 +66,11 @@ const CoursesListing = () => {
 
       {/* Pagination */}
       <div className="flex justify-center mt-8 space-x-2">
-        <Button variant="outline">Previous</Button>
-        <Button variant="outline">1</Button>
-        <Button variant="outline">2</Button>
+        <Button variant="outline">التالي</Button>
         <Button variant="outline">3</Button>
-        <Button variant="outline">Next</Button>
+        <Button variant="outline">2</Button>
+        <Button variant="outline">1</Button>
+        <Button variant="outline">السابق</Button>
       </div>
     </div>
   );
