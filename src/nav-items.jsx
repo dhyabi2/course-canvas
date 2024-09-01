@@ -1,30 +1,30 @@
-import { HomeIcon, BookOpenIcon, UserIcon } from "lucide-react";
+import { HomeIcon, MapIcon, UserIcon } from "lucide-react";
 import Index from "./pages/Index.jsx";
-import CoursesListing from "./pages/CoursesListing.jsx";
-import CourseDetail from "./pages/CourseDetail.jsx";
+import ToursListing from "./pages/CoursesListing.jsx";
+import TourDetail from "./pages/CourseDetail.jsx";
 import Auth from "./pages/Auth.jsx";
 
 export const navItems = [
   {
-    title: "Home",
+    title: "الرئيسية",
     to: "/",
     icon: <HomeIcon className="h-4 w-4" />,
     page: <Index />,
   },
   {
-    title: "Courses",
-    to: "/courses",
-    icon: <BookOpenIcon className="h-4 w-4" />,
-    page: <CoursesListing />,
+    title: "الرحلات",
+    to: "/tours",
+    icon: <MapIcon className="h-4 w-4" />,
+    page: <ToursListing />,
   },
   {
-    title: "Course Detail",
-    to: "/course/:id",
-    icon: <BookOpenIcon className="h-4 w-4" />,
-    page: <CourseDetail />,
+    title: "تفاصيل الرحلة",
+    to: "/tour/:id",
+    icon: <MapIcon className="h-4 w-4" />,
+    page: <TourDetail />,
   },
   {
-    title: "Login/Signup",
+    title: "تسجيل الدخول",
     to: "/auth",
     icon: <UserIcon className="h-4 w-4" />,
     page: <Auth />,

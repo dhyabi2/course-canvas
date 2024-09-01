@@ -4,20 +4,21 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const CourseDetail = () => {
-  const course = {
-    title: 'إتقان عمليات تي مول العالمية',
-    description: "تعلم كيفية إطلاق وإدارة علامتك التجارية بنجاح على تي مول العالمية، منصة التجارة الإلكترونية الرائدة عبر الحدود في الصين. تغطي هذه الدورة الشاملة كل شيء من إعداد الحساب إلى استراتيجيات التسويق المتقدمة.",
-    instructor: {
-      name: 'محمد الزدجالي',
-      bio: 'مدير تنفيذي سابق في علي بابا مع أكثر من 10 سنوات من الخبرة في التجارة الإلكترونية عبر الحدود.',
+const TourDetail = () => {
+  const tour = {
+    title: 'رحلة سور الصين العظيم',
+    description: "استكشف أحد عجائب الدنيا السبع في هذه الرحلة الرائعة إلى سور الصين العظيم. استمتع بمناظر خلابة وتاريخ غني في هذه الرحلة التي تستغرق يومًا كاملًا من بكين.",
+    guide: {
+      name: 'لي وي',
+      bio: 'مرشد سياحي ذو خبرة 15 عامًا في تنظيم الرحلات إلى سور الصين العظيم.',
       avatar: '/placeholder.svg',
     },
-    syllabus: [
-      { title: 'مقدمة في تي مول العالمية', content: 'نظرة عامة على المنصة، أنواع الحسابات، وعملية التسجيل' },
-      { title: 'إعداد وتحسين المتجر', content: 'مبادئ التصميم، أفضل الممارسات لقوائم المنتجات، واستراتيجيات تحسين محركات البحث' },
-      { title: 'الخدمات اللوجستية والجمارك عبر الحدود', content: 'فهم المستودعات الجمركية، الشحن المباشر، واللوائح الجمركية' },
-      { title: 'التسويق على تي مول العالمية', content: 'أدوات التسويق في تي مول، التعاون مع المؤثرين، والفعاليات الترويجية' },
+    itinerary: [
+      { title: 'الانطلاق من بكين', content: 'التجمع في الفندق والانطلاق بالحافلة إلى سور الصين العظيم' },
+      { title: 'وصول موتيانيو', content: 'الوصول إلى قسم موتيانيو من السور وبدء الجولة' },
+      { title: 'استكشاف السور', content: 'المشي على السور واستكشاف الأبراج التاريخية' },
+      { title: 'الغداء', content: 'استراحة للغداء في مطعم محلي' },
+      { title: 'العودة إلى بكين', content: 'العودة إلى بكين مع توقف قصير لشراء التذكارات' },
     ],
   };
 
@@ -25,18 +26,18 @@ const CourseDetail = () => {
     <div className="container mx-auto py-8" dir="rtl">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
-          {/* Course Intro */}
+          {/* Tour Intro */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
+            <h1 className="text-4xl font-bold mb-4">{tour.title}</h1>
             <div className="aspect-video bg-muted rounded-lg mb-4"></div>
-            <p className="text-lg">{course.description}</p>
+            <p className="text-lg">{tour.description}</p>
           </div>
 
-          {/* Syllabus */}
+          {/* Itinerary */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">محتوى الدورة</h2>
+            <h2 className="text-2xl font-bold mb-4">برنامج الرحلة</h2>
             <Accordion type="single" collapsible className="w-full">
-              {course.syllabus.map((item, index) => (
+              {tour.itinerary.map((item, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger>{item.title}</AccordionTrigger>
                   <AccordionContent>{item.content}</AccordionContent>
@@ -47,38 +48,38 @@ const CourseDetail = () => {
         </div>
 
         <div>
-          {/* Enrollment Card */}
+          {/* Booking Card */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle>سجل في هذه الدورة</CardTitle>
-              <CardDescription>اكتسب خبرة في عمليات تي مول العالمية</CardDescription>
+              <CardTitle>احجز هذه الرحلة</CardTitle>
+              <CardDescription>استمتع برحلة لا تُنسى إلى سور الصين العظيم</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold mb-4">199 ريال عماني</p>
-              <Button className="w-full">سجل الآن</Button>
+              <p className="text-2xl font-bold mb-4">75 ريال عماني</p>
+              <Button className="w-full">احجز الآن</Button>
             </CardContent>
             <CardFooter>
-              <p className="text-sm text-muted-foreground">ضمان استرداد الأموال لمدة 30 يومًا</p>
+              <p className="text-sm text-muted-foreground">السعر للشخص الواحد</p>
             </CardFooter>
           </Card>
 
-          {/* Instructor Bio */}
+          {/* Tour Guide Bio */}
           <Card>
             <CardHeader>
-              <CardTitle>المدرب</CardTitle>
+              <CardTitle>المرشد السياحي</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center mb-4">
                 <Avatar className="h-12 w-12 ml-4">
-                  <AvatarImage src={course.instructor.avatar} alt={course.instructor.name} />
-                  <AvatarFallback>{course.instructor.name.charAt(0)}</AvatarFallback>
+                  <AvatarImage src={tour.guide.avatar} alt={tour.guide.name} />
+                  <AvatarFallback>{tour.guide.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>
-                  <h3 className="font-bold">{course.instructor.name}</h3>
-                  <p className="text-sm text-muted-foreground">خبير في تي مول العالمية</p>
+                  <h3 className="font-bold">{tour.guide.name}</h3>
+                  <p className="text-sm text-muted-foreground">مرشد سياحي محترف</p>
                 </div>
               </div>
-              <p>{course.instructor.bio}</p>
+              <p>{tour.guide.bio}</p>
             </CardContent>
           </Card>
         </div>
@@ -86,11 +87,11 @@ const CourseDetail = () => {
 
       {/* Reviews and Ratings (placeholder) */}
       <div className="mt-12">
-        <h2 className="text-2xl font-bold mb-4">آراء الطلاب</h2>
+        <h2 className="text-2xl font-bold mb-4">آراء المسافرين</h2>
         <p>سيتم إضافة مكون التقييمات والآراء هنا.</p>
       </div>
     </div>
   );
 };
 
-export default CourseDetail;
+export default TourDetail;

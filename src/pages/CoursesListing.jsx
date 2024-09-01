@@ -4,32 +4,32 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const CoursesListing = () => {
-  const courses = [
-    { id: 1, title: 'تحسين متجر تي مول', category: 'تي مول', image: '/placeholder.svg' },
-    { id: 2, title: 'استراتيجيات الإعلان على جيه دي دوت كوم', category: 'جيه دي دوت كوم', image: '/placeholder.svg' },
-    { id: 3, title: 'تطوير تطبيقات وي تشات المصغرة', category: 'وي تشات', image: '/placeholder.svg' },
-    { id: 4, title: 'التجارة الإلكترونية عبر الحدود على كاولا', category: 'عبر الحدود', image: '/placeholder.svg' },
-    { id: 5, title: 'تكتيكات الشراء الجماعي على بيندودو', category: 'بيندودو', image: '/placeholder.svg' },
-    { id: 6, title: 'دمج التجارة الإلكترونية في دويين', category: 'التجارة الاجتماعية', image: '/placeholder.svg' },
+const ToursListing = () => {
+  const tours = [
+    { id: 1, title: 'رحلة سور الصين العظيم', category: 'بكين', image: '/placeholder.svg' },
+    { id: 2, title: 'جولة في المدينة المحرمة', category: 'بكين', image: '/placeholder.svg' },
+    { id: 3, title: 'رحلة نهر لي في قويلين', category: 'قويلين', image: '/placeholder.svg' },
+    { id: 4, title: 'استكشاف حي بوند في شنغهاي', category: 'شنغهاي', image: '/placeholder.svg' },
+    { id: 5, title: 'زيارة جيش التيراكوتا في شيان', category: 'شيان', image: '/placeholder.svg' },
+    { id: 6, title: 'رحلة إلى جبل هوانغشان', category: 'آنهوي', image: '/placeholder.svg' },
   ];
 
   return (
     <div className="container mx-auto py-8" dir="rtl">
-      <h1 className="text-4xl font-bold mb-8 text-center">دورات التجارة الإلكترونية الصينية</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">رحلات إلى الصين</h1>
 
       {/* Filtering and Search */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <Select>
           <SelectTrigger className="w-full md:w-[200px]">
-            <SelectValue placeholder="المنصة" />
+            <SelectValue placeholder="الوجهة" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">جميع المنصات</SelectItem>
-            <SelectItem value="tmall">تي مول</SelectItem>
-            <SelectItem value="jd">جيه دي دوت كوم</SelectItem>
-            <SelectItem value="wechat">وي تشات</SelectItem>
-            <SelectItem value="cross-border">عبر الحدود</SelectItem>
+            <SelectItem value="all">جميع الوجهات</SelectItem>
+            <SelectItem value="beijing">بكين</SelectItem>
+            <SelectItem value="shanghai">شنغهاي</SelectItem>
+            <SelectItem value="xian">شيان</SelectItem>
+            <SelectItem value="guilin">قويلين</SelectItem>
           </SelectContent>
         </Select>
         <Select>
@@ -43,22 +43,22 @@ const CoursesListing = () => {
             <SelectItem value="price-high">السعر: من الأعلى إلى الأقل</SelectItem>
           </SelectContent>
         </Select>
-        <Input type="search" placeholder="ابحث عن الدورات..." className="flex-grow" />
+        <Input type="search" placeholder="ابحث عن الرحلات..." className="flex-grow" />
       </div>
 
-      {/* Course Grid */}
+      {/* Tours Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {courses.map((course) => (
-          <Card key={course.id}>
+        {tours.map((tour) => (
+          <Card key={tour.id}>
             <CardHeader>
-              <CardTitle>{course.title}</CardTitle>
-              <CardDescription>{course.category}</CardDescription>
+              <CardTitle>{tour.title}</CardTitle>
+              <CardDescription>{tour.category}</CardDescription>
             </CardHeader>
             <CardContent>
-              <img src={course.image} alt={course.title} className="w-full h-48 object-cover rounded-md" />
+              <img src={tour.image} alt={tour.title} className="w-full h-48 object-cover rounded-md" />
             </CardContent>
             <CardFooter>
-              <Button className="w-full">سجل الآن</Button>
+              <Button className="w-full">احجز الآن</Button>
             </CardFooter>
           </Card>
         ))}
@@ -76,4 +76,4 @@ const CoursesListing = () => {
   );
 };
 
-export default CoursesListing;
+export default ToursListing;

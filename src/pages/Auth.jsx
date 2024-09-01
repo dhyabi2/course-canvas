@@ -10,8 +10,8 @@ const Auth = () => {
     <div className="container mx-auto py-8 flex items-center justify-center min-h-screen" dir="rtl">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>مرحبًا بك</CardTitle>
-          <CardDescription>سجل أو قم بتسجيل الدخول للوصول إلى حسابك</CardDescription>
+          <CardTitle>مرحبًا بك في الوكالة الملكية</CardTitle>
+          <CardDescription>سجل أو قم بتسجيل الدخول لحجز رحلتك إلى الصين</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
