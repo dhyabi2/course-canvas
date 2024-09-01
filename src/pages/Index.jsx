@@ -69,7 +69,7 @@ const Index = () => {
           {[
             { name: 'John Doe', quote: 'This platform has transformed my learning experience!' },
             { name: 'Jane Smith', quote: 'The courses are top-notch and the instructors are amazing.' },
-            { name: 'Bob Johnson', quote: 'I've gained valuable skills that boosted my career.' },
+            { name: 'Bob Johnson', quote: "I've gained valuable skills that boosted my career." },
           ].map((testimonial, index) => (
             <Card key={index}>
               <CardHeader>
