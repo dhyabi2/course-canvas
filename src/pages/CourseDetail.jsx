@@ -6,18 +6,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const CourseDetail = () => {
   const course = {
-    title: 'Advanced React and Redux',
-    description: 'Master the art of building complex, scalable web applications with React and Redux. This comprehensive course covers advanced concepts, best practices, and real-world applications.',
+    title: 'Mastering Tmall Global Operations',
+    description: 'Learn how to successfully launch and manage your brand on Tmall Global, China's premier cross-border e-commerce platform. This comprehensive course covers everything from account setup to advanced marketing strategies.',
     instructor: {
-      name: 'Jane Doe',
-      bio: 'Senior Frontend Developer with 10+ years of experience in building large-scale web applications.',
+      name: 'Zhang Wei',
+      bio: 'Former Alibaba executive with 10+ years of experience in cross-border e-commerce.',
       avatar: '/placeholder.svg',
     },
     syllabus: [
-      { title: 'Introduction to Advanced React Concepts', content: 'Hooks, Context API, and Performance Optimization' },
-      { title: 'Redux Deep Dive', content: 'Advanced state management, middleware, and async actions' },
-      { title: 'Testing React Applications', content: 'Unit testing, integration testing, and end-to-end testing' },
-      { title: 'Server-Side Rendering with Next.js', content: 'Building SEO-friendly React applications' },
+      { title: 'Introduction to Tmall Global', content: 'Platform overview, account types, and registration process' },
+      { title: 'Store Setup and Optimization', content: 'Design principles, product listing best practices, and SEO strategies' },
+      { title: 'Cross-Border Logistics and Customs', content: 'Understanding bonded warehouses, direct shipping, and customs regulations' },
+      { title: 'Marketing on Tmall Global', content: 'Tmall marketing tools, influencer collaborations, and promotional events' },
     ],
   };
 
@@ -51,10 +51,10 @@ const CourseDetail = () => {
           <Card className="mb-8">
             <CardHeader>
               <CardTitle>Enroll in this course</CardTitle>
-              <CardDescription>Gain access to all course materials</CardDescription>
+              <CardDescription>Gain expertise in Tmall Global operations</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold mb-4">$99.99</p>
+              <p className="text-2xl font-bold mb-4">¥1999</p>
               <Button className="w-full">Enroll Now</Button>
             </CardContent>
             <CardFooter>
@@ -75,7 +75,7 @@ const CourseDetail = () => {
                 </Avatar>
                 <div>
                   <h3 className="font-bold">{course.instructor.name}</h3>
-                  <p className="text-sm text-muted-foreground">Course Instructor</p>
+                  <p className="text-sm text-muted-foreground">Tmall Global Expert</p>
                 </div>
               </div>
               <p>{course.instructor.bio}</p>

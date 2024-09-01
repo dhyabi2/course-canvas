@@ -6,30 +6,30 @@ import { Button } from "@/components/ui/button";
 
 const CoursesListing = () => {
   const courses = [
-    { id: 1, title: 'Introduction to React', category: 'Web Development', image: '/placeholder.svg' },
-    { id: 2, title: 'Python for Data Science', category: 'Data Science', image: '/placeholder.svg' },
-    { id: 3, title: 'UI/UX Design Principles', category: 'Design', image: '/placeholder.svg' },
-    { id: 4, title: 'Digital Marketing Fundamentals', category: 'Business', image: '/placeholder.svg' },
-    { id: 5, title: 'Machine Learning Basics', category: 'Data Science', image: '/placeholder.svg' },
-    { id: 6, title: 'JavaScript Advanced Concepts', category: 'Web Development', image: '/placeholder.svg' },
+    { id: 1, title: 'Tmall Store Optimization', category: 'Tmall', image: '/placeholder.svg' },
+    { id: 2, title: 'JD.com Advertising Strategies', category: 'JD.com', image: '/placeholder.svg' },
+    { id: 3, title: 'WeChat Mini-Program Development', category: 'WeChat', image: '/placeholder.svg' },
+    { id: 4, title: 'Cross-Border E-commerce on Kaola', category: 'Cross-Border', image: '/placeholder.svg' },
+    { id: 5, title: 'Pinduoduo Group Buying Tactics', category: 'Pinduoduo', image: '/placeholder.svg' },
+    { id: 6, title: 'Douyin E-commerce Integration', category: 'Social Commerce', image: '/placeholder.svg' },
   ];
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Browse Courses</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">China E-commerce Courses</h1>
 
       {/* Filtering and Search */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <Select>
           <SelectTrigger className="w-full md:w-[200px]">
-            <SelectValue placeholder="Category" />
+            <SelectValue placeholder="Platform" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
-            <SelectItem value="web-dev">Web Development</SelectItem>
-            <SelectItem value="data-science">Data Science</SelectItem>
-            <SelectItem value="design">Design</SelectItem>
-            <SelectItem value="business">Business</SelectItem>
+            <SelectItem value="all">All Platforms</SelectItem>
+            <SelectItem value="tmall">Tmall</SelectItem>
+            <SelectItem value="jd">JD.com</SelectItem>
+            <SelectItem value="wechat">WeChat</SelectItem>
+            <SelectItem value="cross-border">Cross-Border</SelectItem>
           </SelectContent>
         </Select>
         <Select>
@@ -58,7 +58,7 @@ const CoursesListing = () => {
               <img src={course.image} alt={course.title} className="w-full h-48 object-cover rounded-md" />
             </CardContent>
             <CardFooter>
-              <Button className="w-full">View Course</Button>
+              <Button className="w-full">Enroll Now</Button>
             </CardFooter>
           </Card>
         ))}
