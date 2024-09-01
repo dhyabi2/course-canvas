@@ -5,28 +5,28 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background" dir="rtl">
+    <div className="min-h-screen bg-golden-light text-golden-dark" dir="rtl">
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center bg-[url('/placeholder.svg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 bg-golden-dark opacity-50"></div>
         <div className="relative z-10 text-center text-white">
           <h1 className="text-5xl font-bold mb-4">سافر إلى الصين</h1>
           <p className="text-xl mb-8">اكتشف روعة وسحر الصين مع الوكالة الملكية</p>
-          <Button size="lg">ابدأ رحلتك</Button>
+          <Button size="lg" className="bg-golden hover:bg-golden-dark text-white">ابدأ رحلتك</Button>
         </div>
       </section>
 
       {/* Travel Categories */}
       <section className="py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">وجهات سياحية في الصين</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-golden-dark">وجهات سياحية في الصين</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {['بكين', 'شنغهاي', 'شيان', 'قوانغتشو'].map((category) => (
-            <Card key={category} className="hover:shadow-lg transition-shadow">
+            <Card key={category} className="hover:shadow-lg transition-shadow bg-white">
               <CardHeader>
-                <CardTitle>{category}</CardTitle>
+                <CardTitle className="text-golden-dark">{category}</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="h-32 bg-muted rounded-md flex items-center justify-center">
+                <div className="h-32 bg-golden-light rounded-md flex items-center justify-center">
                   <span className="text-4xl">🏙️</span>
                 </div>
               </CardContent>
@@ -36,8 +36,8 @@ const Index = () => {
       </section>
 
       {/* Featured Tours */}
-      <section className="py-16 px-4 bg-secondary">
-        <h2 className="text-3xl font-bold text-center mb-8">الجولات المميزة</h2>
+      <section className="py-16 px-4 bg-golden">
+        <h2 className="text-3xl font-bold text-center mb-8 text-white">الجولات المميزة</h2>
         <Carousel className="w-full max-w-5xl mx-auto">
           <CarouselContent>
             {[
@@ -48,16 +48,16 @@ const Index = () => {
               'زيارة جيش التيراكوتا في شيان'
             ].map((tour, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <Card>
+                <Card className="bg-white">
                   <CardHeader>
-                    <CardTitle>{tour}</CardTitle>
-                    <CardDescription>اكتشف روعة {tour.split(' ')[0]}</CardDescription>
+                    <CardTitle className="text-golden-dark">{tour}</CardTitle>
+                    <CardDescription className="text-golden">اكتشف روعة {tour.split(' ')[0]}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="h-32 bg-muted rounded-md"></div>
+                    <div className="h-32 bg-golden-light rounded-md"></div>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline" className="w-full">اعرف المزيد</Button>
+                    <Button variant="outline" className="w-full text-golden-dark border-golden-dark hover:bg-golden-light">اعرف المزيد</Button>
                   </CardFooter>
                 </Card>
               </CarouselItem>
@@ -70,19 +70,19 @@ const Index = () => {
 
       {/* Testimonials */}
       <section className="py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">آراء المسافرين</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-golden-dark">آراء المسافرين</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             { name: 'سالم الحارثي', quote: 'رحلة لا تُنسى إلى الصين مع الوكالة الملكية!' },
             { name: 'فاطمة البلوشي', quote: 'خدمة ممتازة وتنظيم رائع للرحلة.' },
             { name: 'أحمد الراشدي', quote: "تجربة ثقافية غنية وممتعة في الصين." },
           ].map((testimonial, index) => (
-            <Card key={index}>
+            <Card key={index} className="bg-white">
               <CardHeader>
-                <CardTitle>{testimonial.name}</CardTitle>
+                <CardTitle className="text-golden-dark">{testimonial.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>"{testimonial.quote}"</p>
+                <p className="text-golden">"{testimonial.quote}"</p>
               </CardContent>
             </Card>
           ))}
@@ -90,7 +90,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-8 px-4">
+      <footer className="bg-golden-dark text-white py-8 px-4">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">عن الوكالة الملكية</h3>
@@ -99,19 +99,19 @@ const Index = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">روابط سريعة</h3>
             <ul>
-              <li><a href="#" className="hover:underline">الرحلات</a></li>
-              <li><a href="#" className="hover:underline">الوجهات</a></li>
-              <li><a href="#" className="hover:underline">نصائح السفر</a></li>
-              <li><a href="#" className="hover:underline">اتصل بنا</a></li>
+              <li><a href="#" className="hover:text-golden">الرحلات</a></li>
+              <li><a href="#" className="hover:text-golden">الوجهات</a></li>
+              <li><a href="#" className="hover:text-golden">نصائح السفر</a></li>
+              <li><a href="#" className="hover:text-golden">اتصل بنا</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">تواصل معنا</h3>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-accent">فيسبوك</a>
-              <a href="#" className="hover:text-accent">إنستغرام</a>
-              <a href="#" className="hover:text-accent">تويتر</a>
-              <a href="#" className="hover:text-accent">يوتيوب</a>
+              <a href="#" className="hover:text-golden">فيسبوك</a>
+              <a href="#" className="hover:text-golden">إنستغرام</a>
+              <a href="#" className="hover:text-golden">تويتر</a>
+              <a href="#" className="hover:text-golden">يوتيوب</a>
             </div>
           </div>
         </div>
