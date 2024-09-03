@@ -10,7 +10,7 @@ const CourseDetail = () => {
 
   useEffect(() => {
     // Load course detail and progress from local storage
-    const storedCourseDetail = JSON.parse(localStorage.getItem('courseDetail')) || {};
+    const storedCourseDetail = JSON.parse(localStorage.getItem('courseDetail')) || null;
     const storedProgress = JSON.parse(localStorage.getItem('courseProgress')) || 0;
     
     setCourseDetail(storedCourseDetail);
@@ -43,7 +43,7 @@ const CourseDetail = () => {
           <p className="mb-4">{courseDetail.description}</p>
           <h3 className="text-xl font-bold mb-2">المنهج الدراسي</h3>
           <ul className="list-disc list-inside mb-4">
-            {courseDetail.syllabus.map((item, index) => (
+            {courseDetail.syllabus && courseDetail.syllabus.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
