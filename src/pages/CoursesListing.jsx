@@ -1,79 +1,86 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const ToursListing = () => {
-  const tours = [
-    { id: 1, title: 'رحلة سور الصين العظيم', category: 'بكين', image: '/placeholder.svg' },
-    { id: 2, title: 'جولة في المدينة المحرمة', category: 'بكين', image: '/placeholder.svg' },
-    { id: 3, title: 'رحلة نهر لي في قويلين', category: 'قويلين', image: '/placeholder.svg' },
-    { id: 4, title: 'استكشاف حي بوند في شنغهاي', category: 'شنغهاي', image: '/placeholder.svg' },
-    { id: 5, title: 'زيارة جيش التيراكوتا في شيان', category: 'شيان', image: '/placeholder.svg' },
-    { id: 6, title: 'رحلة إلى جبل هوانغشان', category: 'آنهوي', image: '/placeholder.svg' },
-  ];
+const CoursesListing = () => {
+  const [courses, setCourses] = useState([]);
+  const [filters, setFilters] = useState({});
+
+  useEffect(() => {
+    // Load courses and filters from local storage
+    const storedCourses = JSON.parse(localStorage.getItem('courses')) || [];
+    const storedFilters = JSON.parse(localStorage.getItem('searchFilters')) || {};
+    
+    setCourses(storedCourses);
+    setFilters(storedFilters);
+  }, []);
+
+  const handleFilterChange = (key, value) => {
+    const newFilters = { ...filters, [key]: value };
+    setFilters(newFilters);
+    localStorage.setItem('searchFilters', JSON.stringify(newFilters));
+  };
+
+  const handleSearch = (searchTerm) => {
+    // Implement search logic here
+    console.log('Searching for:', searchTerm);
+  };
 
   return (
     <div className="container mx-auto py-8" dir="rtl">
-      <h1 className="text-4xl font-bold mb-8 text-center">رحلات إلى الصين</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">الدورات المتاحة</h1>
 
-      {/* Filtering and Search */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
-        <Select>
+        <Select onValueChange={(value) => handleFilterChange('category', value)}>
           <SelectTrigger className="w-full md:w-[200px]">
-            <SelectValue placeholder="الوجهة" />
+            <SelectValue placeholder="الفئة" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">جميع الوجهات</SelectItem>
-            <SelectItem value="beijing">بكين</SelectItem>
-            <SelectItem value="shanghai">شنغهاي</SelectItem>
-            <SelectItem value="xian">شيان</SelectItem>
-            <SelectItem value="guilin">قويلين</SelectItem>
+            <SelectItem value="all">جميع الفئات</SelectItem>
+            <SelectItem value="business">الأعمال</SelectItem>
+            <SelectItem value="technology">التكنولوجيا</SelectItem>
+            <SelectItem value="language">اللغات</SelectItem>
           </SelectContent>
         </Select>
-        <Select>
+        <Select onValueChange={(value) => handleFilterChange('level', value)}>
           <SelectTrigger className="w-full md:w-[200px]">
-            <SelectValue placeholder="ترتيب حسب" />
+            <SelectValue placeholder="المستوى" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="popular">الأكثر شعبية</SelectItem>
-            <SelectItem value="newest">الأحدث</SelectItem>
-            <SelectItem value="price-low">السعر: من الأقل إلى الأعلى</SelectItem>
-            <SelectItem value="price-high">السعر: من الأعلى إلى الأقل</SelectItem>
+            <SelectItem value="all">جميع المستويات</SelectItem>
+            <SelectItem value="beginner">مبتدئ</SelectItem>
+            <SelectItem value="intermediate">متوسط</SelectItem>
+            <SelectItem value="advanced">متقدم</SelectItem>
           </SelectContent>
         </Select>
-        <Input type="search" placeholder="ابحث عن الرحلات..." className="flex-grow" />
+        <Input 
+          type="search" 
+          placeholder="ابحث عن الدورات..." 
+          className="flex-grow"
+          onChange={(e) => handleSearch(e.target.value)}
+        />
       </div>
 
-      {/* Tours Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {tours.map((tour) => (
-          <Card key={tour.id}>
+        {courses.map((course) => (
+          <Card key={course.id}>
             <CardHeader>
-              <CardTitle>{tour.title}</CardTitle>
-              <CardDescription>{tour.category}</CardDescription>
+              <CardTitle>{course.title}</CardTitle>
+              <CardDescription>{course.category}</CardDescription>
             </CardHeader>
             <CardContent>
-              <img src={tour.image} alt={tour.title} className="w-full h-48 object-cover rounded-md" />
+              <img src={course.image} alt={course.title} className="w-full h-48 object-cover rounded-md" />
             </CardContent>
             <CardFooter>
-              <Button className="w-full">احجز الآن</Button>
+              <Button className="w-full">سجل الآن</Button>
             </CardFooter>
           </Card>
         ))}
-      </div>
-
-      {/* Pagination */}
-      <div className="flex justify-center mt-8 space-x-2">
-        <Button variant="outline">التالي</Button>
-        <Button variant="outline">3</Button>
-        <Button variant="outline">2</Button>
-        <Button variant="outline">1</Button>
-        <Button variant="outline">السابق</Button>
       </div>
     </div>
   );
 };
 
-export default ToursListing;
+export default CoursesListing;

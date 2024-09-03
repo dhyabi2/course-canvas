@@ -1,8 +1,9 @@
-import { HomeIcon, MapIcon, UserIcon } from "lucide-react";
+import { HomeIcon, MapIcon, UserIcon, BookOpenIcon, ShieldCheckIcon } from "lucide-react";
 import Index from "./pages/Index.jsx";
-import ToursListing from "./pages/CoursesListing.jsx";
-import TourDetail from "./pages/CourseDetail.jsx";
+import CoursesListing from "./pages/CoursesListing.jsx";
+import CourseDetail from "./pages/CourseDetail.jsx";
 import Auth from "./pages/Auth.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 
 export const navItems = [
   {
@@ -12,21 +13,27 @@ export const navItems = [
     page: <Index />,
   },
   {
-    title: "الرحلات",
-    to: "/tours",
-    icon: <MapIcon className="h-4 w-4" />,
-    page: <ToursListing />,
+    title: "الدورات",
+    to: "/courses",
+    icon: <BookOpenIcon className="h-4 w-4" />,
+    page: <CoursesListing />,
   },
   {
-    title: "تفاصيل الرحلة",
-    to: "/tour/:id",
+    title: "تفاصيل الدورة",
+    to: "/course/:id",
     icon: <MapIcon className="h-4 w-4" />,
-    page: <TourDetail />,
+    page: <CourseDetail />,
   },
   {
     title: "تسجيل الدخول",
     to: "/auth",
     icon: <UserIcon className="h-4 w-4" />,
     page: <Auth />,
+  },
+  {
+    title: "لوحة التحكم",
+    to: "/admin",
+    icon: <ShieldCheckIcon className="h-4 w-4" />,
+    page: <AdminDashboard />,
   },
 ];
