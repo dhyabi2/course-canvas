@@ -1,16 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { navItems } from '../nav-items';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
+const HomeNavigation = () => {
+  return (
+    <nav className="bg-golden-dark text-white p-4 sticky top-0 z-50">
+      <ul className="flex justify-center space-x-8">
+        {navItems.map((item) => (
+          <li key={item.to}>
+            <Link 
+              to={item.to} 
+              className="flex items-center space-x-2 hover:text-golden transition-colors duration-300"
+            >
+              {item.icon}
+              <span className="text-lg font-semibold">{item.title}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-golden-light text-golden-dark" dir="rtl">
+      <HomeNavigation />
+      
       {/* Hero Section */}
       <motion.section
         initial="hidden"
