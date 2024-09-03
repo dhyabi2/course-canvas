@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,6 +31,12 @@ const HomeNavigation = () => {
 };
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleRegisterClick = () => {
+    navigate('/courses');
+  };
+
   return (
     <div className="min-h-screen bg-golden-light text-golden-dark" dir="rtl">
       <HomeNavigation />
@@ -48,7 +54,7 @@ const Index = () => {
           <p className="text-3xl mb-4">وكالة الملكية / Royal agency ⚱️</p>
           <p className="text-xl mb-8">مستقبلك في رحلة ✈️ رحلات تجارية الى الصين 🇨🇳</p>
           <p className="text-xl mb-4">-هوليداي ان</p>
-          <Button size="lg" className="bg-golden hover:bg-golden-dark text-white">سجل في رحلتنا القادمة</Button>
+          <Button size="lg" className="bg-golden hover:bg-golden-dark text-white" onClick={handleRegisterClick}>سجل في رحلتنا القادمة</Button>
           <p className="mt-4 text-lg">Nauf alfarsi</p>
         </div>
       </motion.section>
@@ -154,7 +160,7 @@ const Index = () => {
             <p className="mb-2">السبت ٩.٩.٢٠٢٣</p>
             <p className="mb-2">الساعة ٩:٣٠ صباحاً</p>
             <p className="mb-4">عبر تطبيق جوجل ميت</p>
-            <Button className="mb-4">سجل الآن</Button>
+            <Button className="mb-4" onClick={handleRegisterClick}>سجل الآن</Button>
             <p>للتسجيل: 7093 7747 968+</p>
           </CardContent>
         </Card>
@@ -196,7 +202,7 @@ const Index = () => {
             <p className="mb-2">@royalagency.om</p>
             <p className="mb-4">royalagency.n@gmail.com</p>
             <p className="mb-4">مستقبلك.. في رحلة</p>
-            <Button>تواصل الآن</Button>
+            <Button onClick={handleRegisterClick}>تواصل الآن</Button>
           </CardContent>
         </Card>
       </motion.section>
