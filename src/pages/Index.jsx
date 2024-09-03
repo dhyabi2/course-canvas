@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Navigation } from '../components/Navigation';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -9,27 +10,47 @@ const fadeInUp = {
 };
 
 const Index = () => {
+  const [featuredCourses, setFeaturedCourses] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+  const [lastWatched, setLastWatched] = useState(null);
+
+  useEffect(() => {
+    // Retrieve data from local storage
+    const storedFeaturedCourses = JSON.parse(localStorage.getItem('featuredCourses')) || [];
+    const storedTestimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+    const storedLastWatched = JSON.parse(localStorage.getItem('lastWatched'));
+
+    setFeaturedCourses(storedFeaturedCourses);
+    setTestimonials(storedTestimonials);
+    setLastWatched(storedLastWatched);
+  }, []);
+
   return (
     <div className="min-h-screen bg-golden-light text-golden-dark" dir="rtl">
-      {/* Hero Section */}
+      <Navigation />
+
+      {/* Hero Section with Vimeo Video */}
       <motion.section
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
-        className="relative h-[600px] flex items-center justify-center bg-[url('/placeholder.svg')] bg-cover bg-center"
+        className="relative h-[600px] flex items-center justify-center"
       >
         <div className="absolute inset-0 bg-golden-dark opacity-50"></div>
         <div className="relative z-10 text-center text-white">
           <h1 className="text-5xl font-bold mb-4">سافر الى الصين / Travel to China</h1>
           <p className="text-3xl mb-4">وكالة الملكية / Royal agency ⚱️</p>
-          <p className="text-xl mb-8">مستقبلك في رحلة ✈️ رحلات تجارية الى الصين 🇨🇳</p>
-          <p className="text-xl mb-4">-هوليداي ان</p>
+          <div className="aspect-video w-full max-w-3xl mx-auto mb-8">
+            {/* Vimeo embed placeholder */}
+            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+              Vimeo Video Embed
+            </div>
+          </div>
           <Button size="lg" className="bg-golden hover:bg-golden-dark text-white">سجل في رحلتنا القادمة</Button>
-          <p className="mt-4 text-lg">Nauf alfarsi</p>
         </div>
       </motion.section>
 
-      {/* Features Section */}
+      {/* Course Categories Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -37,17 +58,22 @@ const Index = () => {
         variants={fadeInUp}
         className="py-16 px-4"
       >
-        <h2 className="text-3xl font-bold text-center mb-8">ما يميز الوكالة الملكية</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardContent className="text-center">
-            <p className="mb-4">وجود فريق ذو خبره أكثر من ١٥ سنة</p>
-            <p className="mb-4">في مجال الإستيراد والتصدير الآمن</p>
-            <p>نسعى لـ تقديم خبرتنا لكم عن طريق دورات عملية</p>
-          </CardContent>
-        </Card>
+        <h2 className="text-3xl font-bold text-center mb-8">فئات الدورات</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {['الأعمال', 'التكنولوجيا', 'اللغات'].map((category) => (
+            <Card key={category}>
+              <CardHeader>
+                <CardTitle>{category}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>استكشف دورات {category}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </motion.section>
 
-      {/* Agency Trips Section */}
+      {/* Featured Courses Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -55,22 +81,23 @@ const Index = () => {
         variants={fadeInUp}
         className="py-16 px-4 bg-golden"
       >
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">ماهي رحلات الوكالة</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardContent>
-            <p className="mb-4">عبارة عن دورة عملية سياحية في الصين. تشمل:</p>
-            <ul className="list-disc list-inside">
-              <li>رحلات ترفيهية</li>
-              <li>الإقامة في فندق ٥ نجوم</li>
-              <li>الاستقبال والتوديع من المطار</li>
-              <li>برنامج التدريب</li>
-              <li>الجولات الميدانية في السوق والمصنع الصناعية</li>
-            </ul>
-          </CardContent>
-        </Card>
+        <h2 className="text-3xl font-bold text-center mb-8 text-white">الدورات المميزة</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {featuredCourses.map((course) => (
+            <Card key={course.id}>
+              <CardHeader>
+                <CardTitle>{course.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>{course.description}</p>
+                <Button className="mt-4">اكتشف المزيد</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </motion.section>
 
-      {/* Silver Package Section */}
+      {/* Testimonials Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -78,121 +105,47 @@ const Index = () => {
         variants={fadeInUp}
         className="py-16 px-4"
       >
-        <h2 className="text-3xl font-bold text-center mb-8">مستقبلك في رحلة</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-center">الباقة الفضية</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4 font-bold">عرض لأول ٥ أشخاص</p>
-            <ul className="list-disc list-inside mb-4">
-              <li>جولة في أسواق الجملة مع شرح كيفية التعامل مع التجار.</li>
-              <li>طرق الطلب وكيفية الاستيراد والتصدير من الصين.</li>
-              <li>الرحلة الخاصة بالملايس الجاهزة، الرحلة الخاصة بالاكسسوارات، الرحلة الخاصة بالأطفال.</li>
-            </ul>
-            <p className="font-bold">تسجيل قبل الرحلة بـ ١٠ أيام</p>
-          </CardContent>
-        </Card>
+        <h2 className="text-3xl font-bold text-center mb-8">آراء المتعلمين</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testimonials.map((testimonial) => (
+            <Card key={testimonial.id}>
+              <CardContent>
+                <p className="mb-4">"{testimonial.content}"</p>
+                <p className="font-bold">- {testimonial.author}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </motion.section>
 
-      {/* Working Hours Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="py-16 px-4 bg-golden-light"
-      >
-        <h2 className="text-3xl font-bold text-center mb-8">أوقات العمل</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardContent>
-            <p className="mb-2">من الأحد إلى الخميس</p>
-            <p className="mb-2">الفترة الصباحية ٩:٠٠ صباحاً ١:٠٠ ظهراً</p>
-            <p className="mb-2">الفترة المسائية ٣:٠٠ مساءً ٥:٠٠ مساءً</p>
-            <p className="mb-2">يوم الجمعة إجازة</p>
-            <p>يوم السبت التواصل فقط واتس اب</p>
-          </CardContent>
-        </Card>
-      </motion.section>
+      {/* Last Watched Section */}
+      {lastWatched && (
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="py-16 px-4 bg-golden-light"
+        >
+          <h2 className="text-3xl font-bold text-center mb-8">استأنف التعلم</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle>{lastWatched.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>{lastWatched.description}</p>
+              <Button className="mt-4">استأنف الدورة</Button>
+            </CardContent>
+          </Card>
+        </motion.section>
+      )}
 
-      {/* Free Workshop Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="py-16 px-4"
-      >
-        <h2 className="text-3xl font-bold text-center mb-8">ضاعف أموالك في رحلة</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardContent className="text-center">
-            <p className="mb-2 font-bold">ورشة مجانية بعنوان</p>
-            <p className="mb-2">السبت ٩.٩.٢٠٢٣</p>
-            <p className="mb-2">الساعة ٩:٣٠ صباحاً</p>
-            <p className="mb-4">عبر تطبيق جوجل ميت</p>
-            <Button className="mb-4">سجل الآن</Button>
-            <p>للتسجيل: 7093 7747 968+</p>
-          </CardContent>
-        </Card>
-      </motion.section>
-
-      {/* About Us Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="py-16 px-4 bg-golden"
-      >
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">من نحن</h2>
-        <Card className="max-w-3xl mx-auto">
-          <CardContent>
-            <p className="mb-4">الوكالة الملكية هي وكالة سفر متخصصة في تقديم خدمات سفر عالية الجودة واحترافية وشخصية لأفراد الأعمال.</p>
-            <p className="mb-4">هدفنا هو أن نكون الخيار الأفضل للمسافرين من رجال الأعمال.</p>
-            <p className="mb-4">حيث نقدم تجربة سفر فريدة ومصممة خصيصاً تساعدهم على التركيز على أهدافهم مع توفير الراحة والرفاهية. نحن نقدم خدمات شاملة من خدمات السفر، بما في ذلك حجوزات الطيران، وحجوزات الفنادق، وترتيبات النقل البري، وتخطيط أحداث الشركات لجلب بضائعهم من أكثر الأماكن جودة وبأقل الأسعار.</p>
-            <p className="mb-4">مما يضمن تجربة سلسة وخالية من الإجهاد تمكن عملائنا من التركيز على أهداف أعمالهم الأساسية.</p>
-            <p>لدينا طمح بأن نصبح وكالة السفر الرائدة للمسافرين من رجال الأعمال، ونشتهر بمهمتنا وموتوفيتنا والتزامنا بتقديم خدمة وقيمة استثنائية.</p>
-          </CardContent>
-        </Card>
-      </motion.section>
-
-      {/* Contact Us Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="py-16 px-4"
-      >
-        <h2 className="text-3xl font-bold text-center mb-8">تواصل معنا</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardContent className="text-center">
-            <p className="mb-4">لإستفسارتكم.. وتواصلكم تواصلوا معنا عبر!</p>
-            <p className="mb-2">+968 9190 0702</p>
-            <p className="mb-2">@royalagency.om</p>
-            <p className="mb-4">royalagency.n@gmail.com</p>
-            <p className="mb-4">مستقبلك.. في رحلة</p>
-            <Button>تواصل الآن</Button>
-          </CardContent>
-        </Card>
-      </motion.section>
-
-      {/* Location Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="py-16 px-4 bg-golden-light"
-      >
-        <h2 className="text-3xl font-bold text-center mb-8">موقعنا</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardContent className="text-center">
-            <p className="mb-2">سلطنة عمان - محافظة مسقط</p>
-            <p>الموالح – هوليدان ان</p>
-          </CardContent>
-        </Card>
-      </motion.section>
+      {/* Footer */}
+      <footer className="bg-golden-dark text-white py-8 px-4">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2024 وكالة الملكية. جميع الحقوق محفوظة.</p>
+        </div>
+      </footer>
     </div>
   );
 };
