@@ -9,12 +9,22 @@ const CourseDetail = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Load course detail and progress from local storage
-    const storedCourseDetail = JSON.parse(localStorage.getItem('courseDetail')) || null;
-    const storedProgress = JSON.parse(localStorage.getItem('courseProgress')) || 0;
-    
-    setCourseDetail(storedCourseDetail);
-    setProgress(storedProgress);
+    // Simulating API call to fetch course details
+    const fetchCourseDetail = async () => {
+      // In a real application, you would fetch the course details from an API
+      // For now, we'll use mock data
+      const mockCourseDetail = {
+        id: id,
+        title: `Course ${id}`,
+        instructor: "John Doe",
+        description: "This is a sample course description.",
+        syllabus: ["Module 1", "Module 2", "Module 3"],
+        instructorBio: "John Doe is an experienced instructor.",
+      };
+      setCourseDetail(mockCourseDetail);
+    };
+
+    fetchCourseDetail();
   }, [id]);
 
   const updateProgress = (newProgress) => {
@@ -35,7 +45,6 @@ const CourseDetail = () => {
         </CardHeader>
         <CardContent>
           <div className="aspect-video mb-4">
-            {/* Vimeo embed placeholder */}
             <div className="w-full h-full bg-gray-200 flex items-center justify-center">
               Vimeo Video Embed
             </div>
